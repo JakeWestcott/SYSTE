@@ -51,13 +51,13 @@ public class register extends javax.swing.JFrame {
         });
 
         label_username.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
-        label_username.setText("Username");
+        label_username.setText("Username:");
 
         label_pob.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
-        label_pob.setText("Place of Birth");
+        label_pob.setText("Place of Birth:");
 
         label_dob.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
-        label_dob.setText("Date of Birth");
+        label_dob.setText("Date of Birth:");
 
         label_profile.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         label_profile.setText("Music Profile:");
@@ -66,12 +66,13 @@ public class register extends javax.swing.JFrame {
         label_cancel.setText("or Cancel");
 
         comboBox_genre.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
-        comboBox_genre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classical", "Country", "Dance", "Hip Hop / Rap", "Indie", "Jazz", "Opera", "Pop", "R&B / Soul", "Reggae", "Rock", " " }));
+        comboBox_genre.setMaximumRowCount(11);
+        comboBox_genre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classical", "Country", "Dance", "Hip Hop / Rap", "Indie", "Jazz", "Opera", "Pop", "R&B / Soul", "Reggae", "Rock" }));
 
         botton_addProfile.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         botton_addProfile.setText("Add");
 
-        textArea_genre.setColumns(20);
+        textArea_genre.setColumns(10);
         textArea_genre.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         textArea_genre.setRows(5);
         jScrollPane1.setViewportView(textArea_genre);
@@ -86,47 +87,48 @@ public class register extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(button_register)
                     .addComponent(label_pob)
                     .addComponent(label_username)
                     .addComponent(label_dob))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(textField_username)
-                            .addComponent(textField_pob, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(textField_dob, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(label_cancel))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(textField_username)
+                        .addComponent(textField_pob, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(textField_dob, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 15, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(22, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(label_profile)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(comboBox_genre, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(botton_addProfile))))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                                .addComponent(botton_addProfile))
+                            .addComponent(label_profile))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(35, 35, 35)
+                .addComponent(button_register)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(label_cancel)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_profile)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label_username)
+                    .addComponent(textField_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBox_genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(botton_addProfile))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(label_username)
-                                    .addComponent(textField_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(comboBox_genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(botton_addProfile)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(label_profile)))
                         .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label_pob)
@@ -135,15 +137,14 @@ public class register extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(label_dob)
                             .addComponent(textField_dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 46, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(46, 46, 46)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(button_register)
+                            .addComponent(label_cancel)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button_register)
-                    .addComponent(label_cancel))
-                .addGap(27, 27, 27))
+                .addGap(0, 25, Short.MAX_VALUE))
         );
 
         pack();
