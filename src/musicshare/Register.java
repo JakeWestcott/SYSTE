@@ -5,17 +5,29 @@
  */
 package musicshare;
 
+import javax.swing.*;
+
 /**
  *
  * @author Theo
  */
-public class Register extends javax.swing.JFrame {
+public class Register extends JFrame {
 
     /**
      * Creates new form register
      */
     public Register() {
+        this.setSize(400, 400);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         initComponents();
+        groupButton();
+        hideElements();
+        setProperty();
+        
+        
     }
 
     /**
@@ -28,22 +40,25 @@ public class Register extends javax.swing.JFrame {
     private void initComponents() {
 
         textField_username = new javax.swing.JTextField();
-        textField_pob = new javax.swing.JTextField();
-        textField_dob = new javax.swing.JTextField();
+        textField_POB = new javax.swing.JTextField();
+        textField_DOB = new javax.swing.JTextField();
         label_username = new javax.swing.JLabel();
-        label_pob = new javax.swing.JLabel();
-        label_dob = new javax.swing.JLabel();
+        label_POB = new javax.swing.JLabel();
+        label_DOB = new javax.swing.JLabel();
         label_profile = new javax.swing.JLabel();
-        label_cancel = new javax.swing.JLabel();
         comboBox_genre = new javax.swing.JComboBox<>();
-        botton_addProfile = new javax.swing.JButton();
+        button_addProfile = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         textArea_genre = new javax.swing.JTextArea();
         button_register = new javax.swing.JButton();
+        button_login = new javax.swing.JButton();
+        label_password = new javax.swing.JLabel();
+        textField_password = new javax.swing.JTextField();
+        radio_login = new javax.swing.JRadioButton();
+        radio_register = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Music Share - Register");
-        setPreferredSize(new java.awt.Dimension(475, 260));
 
         textField_username.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,27 +69,24 @@ public class Register extends javax.swing.JFrame {
         label_username.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         label_username.setText("Username:");
 
-        label_pob.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
-        label_pob.setText("Place of Birth:");
+        label_POB.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
+        label_POB.setText("Place of Birth:");
 
-        label_dob.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
-        label_dob.setText("Date of Birth:");
+        label_DOB.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
+        label_DOB.setText("Date of Birth:");
 
         label_profile.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         label_profile.setText("Music Profile:");
-
-        label_cancel.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 11)); // NOI18N
-        label_cancel.setText("or Cancel");
 
         comboBox_genre.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         comboBox_genre.setMaximumRowCount(11);
         comboBox_genre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Classical", "Country", "Dance", "Hip Hop / Rap", "Indie", "Jazz", "Opera", "Pop", "R&B / Soul", "Reggae", "Rock" }));
 
-        botton_addProfile.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
-        botton_addProfile.setText("Add");
-        botton_addProfile.addActionListener(new java.awt.event.ActionListener() {
+        button_addProfile.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
+        button_addProfile.setText("Add");
+        button_addProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botton_addProfileActionPerformed(evt);
+                button_addProfileActionPerformed(evt);
             }
         });
 
@@ -86,6 +98,37 @@ public class Register extends javax.swing.JFrame {
         button_register.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         button_register.setText("Register");
 
+        button_login.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
+        button_login.setText("Login");
+        button_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button_loginActionPerformed(evt);
+            }
+        });
+
+        label_password.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
+        label_password.setText("Password:");
+
+        textField_password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textField_passwordActionPerformed(evt);
+            }
+        });
+
+        radio_login.setText("Login");
+        radio_login.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_loginActionPerformed(evt);
+            }
+        });
+
+        radio_register.setText("Register");
+        radio_register.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_registerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -93,64 +136,76 @@ public class Register extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(label_pob)
-                    .addComponent(label_username)
-                    .addComponent(label_dob))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(textField_username)
-                        .addComponent(textField_pob, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(textField_dob, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(label_POB)
+                            .addComponent(label_username)
+                            .addComponent(label_DOB)
+                            .addComponent(label_password))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(textField_POB, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textField_password, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textField_username, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(radio_login)
+                                .addGap(18, 18, 18)
+                                .addComponent(radio_register))
+                            .addComponent(textField_DOB)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(button_register)
+                        .addGap(18, 18, 18)
+                        .addComponent(button_login)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(comboBox_genre, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(botton_addProfile))
+                                .addComponent(button_addProfile))
                             .addComponent(label_profile))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(button_register)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(label_cancel)
-                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(label_profile)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(label_profile)
+                    .addComponent(radio_login)
+                    .addComponent(radio_register))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(label_username)
                     .addComponent(textField_username, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label_username)
                     .addComponent(comboBox_genre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botton_addProfile))
+                    .addComponent(button_addProfile))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
+                        .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label_pob)
-                            .addComponent(textField_pob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)
+                            .addComponent(label_password)
+                            .addComponent(textField_password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(label_dob)
-                            .addComponent(textField_dob, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(46, 46, 46)
+                            .addComponent(textField_POB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_POB))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(textField_DOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_DOB))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(button_register)
-                            .addComponent(label_cancel)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 25, Short.MAX_VALUE))
+                            .addComponent(button_login)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 29, Short.MAX_VALUE))
         );
 
         pack();
@@ -160,11 +215,80 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_textField_usernameActionPerformed
 
-    private void botton_addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botton_addProfileActionPerformed
+    private void button_addProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_addProfileActionPerformed
+        
         String input_genre = (String)this.comboBox_genre.getSelectedItem();
         this.textArea_genre.setText(this.textArea_genre.getText()+input_genre+"\n");
-    }//GEN-LAST:event_botton_addProfileActionPerformed
+    }//GEN-LAST:event_button_addProfileActionPerformed
 
+    private void button_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button_loginActionPerformed
+
+            
+        String username=textField_username.getText();
+        String password=textField_password.getText();
+        
+        if (username.equals("admin")&&password.equals("password")){
+            JOptionPane.showMessageDialog(null,"Valid User");
+        }
+        else
+            JOptionPane.showMessageDialog(null,"Invalid User");
+
+    
+    }//GEN-LAST:event_button_loginActionPerformed
+
+    private void textField_passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textField_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textField_passwordActionPerformed
+
+    private void radio_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_loginActionPerformed
+        hideElements();
+    }//GEN-LAST:event_radio_loginActionPerformed
+
+    private void radio_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_registerActionPerformed
+        showElements();
+    }//GEN-LAST:event_radio_registerActionPerformed
+
+    private void groupButton()
+    {
+        ButtonGroup bgselect = new ButtonGroup();
+        
+        bgselect.add(radio_login);
+        bgselect.add(radio_register);
+        radio_login.setSelected(true);
+    }
+    
+    private void hideElements()
+    {
+        button_addProfile.setVisible(false);
+        button_register.setVisible(false);
+        comboBox_genre.setVisible(false);
+        label_DOB.setVisible(false);
+        label_POB.setVisible(false);
+        label_profile.setVisible(false);
+        textArea_genre.setVisible(false);
+        textField_DOB.setVisible(false);
+        textField_POB.setVisible(false);
+    }
+    
+    private void showElements()
+    {
+        button_addProfile.setVisible(true);
+        button_register.setVisible(true);
+        comboBox_genre.setVisible(true);
+        label_DOB.setVisible(true);
+        label_POB.setVisible(true);
+        label_profile.setVisible(true);
+        textArea_genre.setVisible(true);
+        textField_DOB.setVisible(true);
+        textField_POB.setVisible(true);
+    }
+    
+    private void setProperty()
+    {
+
+        textField_password.setMinimumSize(textField_password.getPreferredSize());
+        textField_username.setMinimumSize(textField_username.getPreferredSize());
+    }
     /**
      * @param args the command line arguments
      */
@@ -202,18 +326,22 @@ public class Register extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botton_addProfile;
+    private javax.swing.JButton button_addProfile;
+    private javax.swing.JButton button_login;
     private javax.swing.JButton button_register;
     private javax.swing.JComboBox<String> comboBox_genre;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel label_cancel;
-    private javax.swing.JLabel label_dob;
-    private javax.swing.JLabel label_pob;
+    private javax.swing.JLabel label_DOB;
+    private javax.swing.JLabel label_POB;
+    private javax.swing.JLabel label_password;
     private javax.swing.JLabel label_profile;
     private javax.swing.JLabel label_username;
+    private javax.swing.JRadioButton radio_login;
+    private javax.swing.JRadioButton radio_register;
     private javax.swing.JTextArea textArea_genre;
-    private javax.swing.JTextField textField_dob;
-    private javax.swing.JTextField textField_pob;
+    private javax.swing.JTextField textField_DOB;
+    private javax.swing.JTextField textField_POB;
+    private javax.swing.JTextField textField_password;
     private javax.swing.JTextField textField_username;
     // End of variables declaration//GEN-END:variables
 }
