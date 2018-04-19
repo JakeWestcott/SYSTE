@@ -5,6 +5,11 @@
  */
 package musicshare;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+
 /**
  *
  * @author Theo
@@ -16,6 +21,7 @@ public class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen() {
         initComponents();
+        connectClient();
     }
 
     /**
@@ -80,6 +86,11 @@ public class MainScreen extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 13)); // NOI18N
         jButton1.setText("Play");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
@@ -198,9 +209,9 @@ public class MainScreen extends javax.swing.JFrame {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6))
                 .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
@@ -222,6 +233,27 @@ public class MainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        connectClient();
+    }//GEN-LAST:event_jButton1ActionPerformed
+    
+    public void connectClient(){
+            try{
+            Socket server = new Socket("localhost", 9090);
+            System.out.println("Connected to" + server.getInetAddress());
+            //create IO Streams
+            DataInputStream inFromServer = new DataInputStream(server.getInputStream());
+            DataOutputStream outToServer = new DataOutputStream(server.getOutputStream());
+            //send to server
+            outToServer.writeUTF("Time");
+            //read from server
+            String data = inFromServer.readUTF();
+            System.out.println("Server said: " + data);
+            server.close();
+    } catch (IOException e){
+      System.out.println("There has been an IOException");
+    }
+    }
     /**
      * @param args the command line arguments
      */
